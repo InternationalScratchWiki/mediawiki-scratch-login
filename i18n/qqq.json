@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"jvvg"
+		]
+	},
+	"scratchlogin": "Log in with a Scratch account",
+	"scratchlogin-desc": "some description",
+	"scratchlogin-summary": "ScratchLogin summary",
+	"scratchlogin-title": "Title",
+	"action-scratchlogin": ""
+}
