@@ -11,8 +11,9 @@
 	"scratchlogin-summary": "Log in with your Scratch account.",
 	"scratchlogin-project-id": "10135908",
 	"scratchlogin-project-author": "ModShare",
-	"scratchlogin-instructions": "Please comment the following verification code on the $1user verification project$2:<br/>'''$3'''",
+	"scratchlogin-instructions": "Please comment the following verification code on the $1user verification project$2:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchLogin/reset|reset your verification code]].)",
 	"scratchlogin-uncommented": "You do not appear to have commented the code on the project.",
 	"scratchlogin-unregistered": "The user '''$1''' is not registered on this wiki.",
-	"scratchlogin-success": "Success! You are now logged in as '''$1'''."
+	"scratchlogin-success": "Success! You will be logged in as '''$1''' on the next page you visit.",
+	"scratchlogin-code-reset": "Your verification code has been reset.<br/>Return to [[Special:ScratchLogin]]."
 }
