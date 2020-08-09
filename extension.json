@@ -1,7 +1,7 @@
 {
 	"name": "Scratch Login",
-	"author": ["Jacob G. (jvvg)"],
-	"url": "https://www.mediawiki.org/wiki/Extension:Example",
+	"author": ["Jacob G. (jvvg)", "Kenny2scratch"],
+	"url": "https://github.com/jacob-g/mediawiki-scratch-login",
 	"descriptionmsg": "scratchlogin-desc",
 	"version": "1.0",
 	"license-name": "GPL-2.0-or-later",
