@@ -1,12 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"jvvg"
+			"jvvg",
+			"Kenny2scratch"
 		]
 	},
-	"scratchlogin": "Log in with a Scratch account",
-	"scratchlogin-desc": "some description",
-	"scratchlogin-summary": "ScratchLogin summary",
-	"scratchlogin-title": "Title",
-	"action-scratchlogin": ""
+	"scratchlogin": "The name of the extension in [[Special:SpecialPages]]",
+	"scratchlogin-desc": "Description shown on Special:Version",
+	"scratchlogin-title": "Title of extension",
+	"scratchlogin-summary": "Description shown on [[Special:ScratchLogin]]",
+	"scratchlogin-project-id": "ID of verification project",
+	"scratchlogin-project-author": "Author of verification project",
+	"scratchlogin-instructions": "Instructions shown on [[Special:ScratchLogin]]. $1 and $2 open and close the link to the project; $3 is the verification code.",
+	"scratchlogin-uncommented": "Error message when the code is not found.",
+	"scratchlogin-unregistered": "Error message when the user who commented the code is not registered on the wiki. $1 is the username found.",
+	"scratchlogin-success": "Message for successful login. $1 is the logged in username."
 }
