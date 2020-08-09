@@ -15,5 +15,8 @@
 	},
 	"SpecialPages": {
 		"ScratchLogin": "SpecialScratchLogin"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "SpecialScratchLogin::insertScratchLoginLink"
 	}
 }
