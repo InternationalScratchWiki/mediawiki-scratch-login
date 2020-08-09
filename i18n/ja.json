@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"apple502j"
+		]
+	},
+	"scratchlogin": "Scratchでログイン",
+	"scratchlogin-desc": "Scratchアカウントでログインする。",
+	"scratchlogin-title": "Scratchでログイン",
+	"scratchlogin-summary": "Scratchアカウントでログインします。",
+	"scratchlogin-project-id": "416761417",
+	"scratchlogin-project-author": "apple502j_sb",
+	"scratchlogin-instructions": "'''注意: Scratchでログインするには、このWikiにてすでにアカウントを持っていないといけません!'''<br/>以下の認証コードを$1認証用プロジェクト$2のコメント欄にコメントしてください。<br/>'''$3'''<br/><small>(必要な場合は、[[Special:ScratchLogin/reset|認証コードをリセットできます]]。)",
+	"scratchlogin-uncommented": "認証コードがコメントされていません。",
+	"scratchlogin-unregistered": "ユーザー '''$1''' はこのWikiに登録されていません。",
+	"scratchlogin-success": "'''$1'''としてログインしました。",
+	"scratchlogin-code-reset": "認証コードはリセットされました。<br/>[[Special:ScratchLogin]]へ戻る。",
+	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center\">[[Special:ScratchLogin|Scratchでログイン]]</p>"
+}
