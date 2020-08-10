@@ -38,6 +38,8 @@ class SpecialScratchPasswordReset extends ScratchSpecialPage {
 		AuthManager::singleton()->changeAuthenticationData($req);
 		// display the password and pass the username to log in with
 		$out->addWikiMsg('scratchpasswordreset-success', $req->password, $user->getName());
+		//also reset the code so it can't be used twice
+		$this->resetCode($out, $request);
 	}
 
 	// reset the code associated with the current user's session

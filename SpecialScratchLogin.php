@@ -24,6 +24,7 @@ class SpecialScratchLogin extends ScratchSpecialPage {
 		if ($user == null) return;
 		// now that we have passed all the other hurdles, log in the user
 		// set the logged in user to the user found by that name
+		$this->resetCode($out, $request);
 		$request->getSession()->setUser($user);
 		$request->getSession()->save();
 
