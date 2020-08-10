@@ -11,12 +11,15 @@
 		"ScratchLogin": ["i18n"]
 	},
 	"AutoloadClasses": {
-		"SpecialScratchLogin": "SpecialScratchLogin.php"
+		"SpecialScratchLogin": "SpecialScratchLogin.php",
+		"SpecialScratchPasswordReset": "SpecialScratchPasswordReset.php",
+		"ScratchLoginHooks": "ScratchLogin.hooks.php"
 	},
 	"SpecialPages": {
-		"ScratchLogin": "SpecialScratchLogin"
+		"ScratchLogin": "SpecialScratchLogin",
+		"ScratchPasswordReset": "SpecialScratchPasswordReset"
 	},
 	"Hooks": {
-		"BeforePageDisplay": "SpecialScratchLogin::insertScratchLoginLink"
+		"BeforePageDisplay": "ScratchLoginHooks::insertScratchLoginLink"
 	}
 }
