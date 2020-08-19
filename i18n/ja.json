@@ -15,7 +15,7 @@
 	"scratchlogin-code-reset": "認証コードはリセットされました。<br/>[[Special:ScratchLogin]]へ戻る。",
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center\">[[Special:ScratchLogin|Scratchでログイン]]</p>",
 	"scratchpasswordreset": "Scratchでパスワードリセット",
-	"scratchlogin-instructions": "以下の認証コードを$1認証用プロジェクト$2のコメント欄にコメントしてください。<br/>'''$3'''<br/><small>(必要な場合は、[[Special:ScratchLogin/reset|認証コードをリセットできます]]。)",
+	"scratchpasswordreset-instructions": "以下の認証コードを$1認証用プロジェクト$2のコメント欄にコメントしてください。<br/>'''$3'''<br/><small>(必要な場合は、[[Special:ScratchLogin/reset|認証コードをリセットできます]]。)</small>",
 	"scratchpasswordreset-verify": "確認",
 	"scratchpasswordreset-success": "パスワード'''<code>$1</code>'''を使って[[Special:UserLogin/$2|ログイン]]し、その後自分でパスワードを再設定してください。",
 	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Scratchでパスワードリセット]]"
