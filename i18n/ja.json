@@ -12,7 +12,7 @@
 	"scratchlogin-uncommented": "認証コードがコメントされていません。",
 	"scratchlogin-unregistered": "ユーザー '''$1''' はこのWikiに登録されていません。",
 	"scratchlogin-success": "'''$1'''としてログインしました。",
-	"scratchlogin-code-reset": "認証コードはリセットされました。<br/>[[Special:ScratchLogin]]へ戻る。",
+	"scratchlogin-code-reset": "認証コードはリセットされました。<br/>[[$1]]へ戻る。",
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center\">[[Special:ScratchLogin|Scratchでログイン]]</p>",
 	"scratchpasswordreset": "Scratchでパスワードリセット",
 	"scratchpasswordreset-instructions": "以下の認証コードを$1認証用プロジェクト$2のコメント欄にコメントしてください。<br/>'''$3'''<br/><small>(必要な場合は、[[Special:ScratchLogin/reset|認証コードをリセットできます]]。)</small>",
