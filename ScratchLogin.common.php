@@ -37,6 +37,7 @@ function topVerifCommenter($req_comment) {
 	$comments = verifComments();
 
 	$matching_comments = array_filter($comments, function(&$comment) use($req_comment) {
+		if (preg_match('/^_+|_+$|__+/', $comment['author']['username'])) return false;
 		return stristr($comment['content'], $req_comment);
 	});
 	if (empty($matching_comments)) {
