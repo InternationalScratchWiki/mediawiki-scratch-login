@@ -3,7 +3,7 @@
 	"author": ["Jacob G. (jvvg)", "Kenny2scratch"],
 	"url": "https://github.com/jacob-g/mediawiki-scratch-login",
 	"descriptionmsg": "scratchlogin-desc",
-	"version": "1.0",
+	"version": "1.1",
 	"license-name": "GPL-2.0-or-later",
 	"type": "specialpage",
 	"manifest_version": 1,
