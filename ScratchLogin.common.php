@@ -84,11 +84,13 @@ class ScratchSpecialPage extends SpecialPage {
 			'target' => '_blank'
 		]);
 
+		$session = $request->getSession();
+
 		// show the instructions to comment the verification code
 		// on the project (using the link we generated above)
 		$out->addHTML(wfMessage($instructions)->rawParams(
 			$link, Html::closeElement( 'a' ),
-			sessionVerificationCode($request->getSession())
+			sessionVerificationCode($session)
 		)->inContentLanguage()->parseAsBlock());
 
 		// show the submit button
@@ -106,8 +108,9 @@ class ScratchSpecialPage extends SpecialPage {
 	}
 
 	function verifSucceeded($out, $request) {
+		$session = $request->getSession();
 		// see the first person to comment the verification code
-		$username = topVerifCommenter(sessionVerificationCode($request->getSession()));
+		$username = topVerifCommenter(sessionVerificationCode($session));
 
 		// if nobody commented the verification code, show an error
 		if ($username == null) {
@@ -142,7 +145,8 @@ class ScratchSpecialPage extends SpecialPage {
 
 	// reset the code associated with the current user's session
 	function doCodeReset($out, $request, $returnto) {
-		generateNewCodeForSession($request->getSession());
+		$session = $request->getSession();
+		generateNewCodeForSession($session);
 		$out->addWikiMsg('scratchlogin-code-reset', $returnto);
 	}
 }
