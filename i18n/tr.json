@@ -9,7 +9,7 @@
 	"scratchlogin-project-id": "10135908",
 	"scratchlogin-project-author": "ModShare",
 	"scratchlogin-instructions": "'''Not: Scratch hesabıyla giriş yapmak için bu vikide halihazırda bir hesabınız olmalıdır!'''<br/>Lütfen aşağıdaki doğrulama kodunu $1kullanıcı doğrulama projesine$2 yorum olarak gönderin:<br/>'''$3'''<br/><small>(Eğer gerekliyse, [[Special:ScratchLogin/reset|doğrulama kodunuzu sıfırlayabilirsiniz]].)</small>",
-	"scratchlogin-uncommented": "You do not appear to have commented the code on the project.",
+	"scratchlogin-uncommented": "Kodu projeye yolladığınız gözükmüyor.",
 	"scratchlogin-unregistered": "Kullanıcı '''$1''' bu vikide kaydolmamış.",
 	"scratchlogin-success": "Başarılı! Ziyaret ettiğiniz bir sonraki sayfada '''$1''' olarak giriş yapacaksınız.",
 	"scratchlogin-code-reset": "Doğrulama kodunuz sıfırlandı.<br/>[[$1]]'e geri dönün.",
