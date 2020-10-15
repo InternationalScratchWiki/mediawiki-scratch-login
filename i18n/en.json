@@ -12,6 +12,7 @@
 	"scratchlogin-instructions": "'''Note: You must already have an account on this wiki to log in with Scratch!'''<br/>Please comment the following verification code on the $1user verification project$2:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchLogin/reset|reset your verification code]].)</small>",
 	"scratchlogin-uncommented": "You do not appear to have commented the code on the project.",
 	"scratchlogin-unregistered": "The user '''$1''' is not registered on this wiki.",
+	"scratchlogin-account-age-error": "The user '''$1''' was registered before the Scratch account is created. The action was prevented for security reasons.",
 	"scratchlogin-success": "Success! You will be logged in as '''$1''' on the next page you visit.",
 	"scratchlogin-code-reset": "Your verification code has been reset.<br/>Return to [[$1]].",
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Log in with Scratch]]</p>",
