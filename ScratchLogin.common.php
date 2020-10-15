@@ -1,6 +1,10 @@
 <?php
+
+use Wikimedia\Timestamp\ConvertibleTimestamp;
+
 define('SCRATCH_COMMENT_API_URL', 'https://api.scratch.mit.edu/users/%s/projects/%s/comments?offset=0&limit=20');
 define('PROJECT_LINK', 'https://scratch.mit.edu/projects/%s/');
+define('USER_API_LINK', 'https://api.scratch.mit.edu/users/%s/');
 
 function randomVerificationCode() {
 	// translate 0->A, 1->B, etc to bypass Scratch phone number censor
@@ -44,6 +48,14 @@ function topVerifCommenter($req_comment) {
 		return null;
 	}
 	return array_values($matching_comments)[0]['author']['username'];
+}
+
+function getScratchUserRegisteredAt($username) {
+	$info = json_decode(file_get_contents(sprintf(
+		USER_API_LINK, $username
+	)), true);
+	$registeredAt = $info['history']['joined'];
+	return new ConvertibleTimestamp($registeredAt);
 }
 
 class ScratchSpecialPage extends SpecialPage {
@@ -131,6 +143,20 @@ class ScratchSpecialPage extends SpecialPage {
 		if ($user->getId() == 0) {
 			$this->showError(
 				wfMessage('scratchlogin-unregistered', $username)
+				->inContentLanguage()->parse(),
+				$out, $request
+			);
+			return null;
+		}
+		
+		$wikiUserTimestamp = new ConvertibleTimestamp($user->getRegistration());
+		$scratchUserTimestamp = getScratchUserRegisteredAt($username);
+		$diff = $scratchUserTimestamp->diff($wikiUserTimestamp);
+		if ($diff->invert) {
+			// Scratch user registered after wiki user.
+			// To prevent disaster, make it error.
+			$this->showError(
+				wfMessage('scratchlogin-account-age-error', $username)
 				->inContentLanguage()->parse(),
 				$out, $request
 			);

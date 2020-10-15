@@ -14,6 +14,7 @@
 	"scratchlogin-instructions": "Instructions shown on [[Special:ScratchLogin]]. $1 and $2 open and close the link to the project; $3 is the verification code.",
 	"scratchlogin-uncommented": "Error message when the code is not found.",
 	"scratchlogin-unregistered": "Error message when the user who commented the code is not registered on the wiki. $1 is the username found.",
+	"scratchlogin-account-age-error": "Error message when the user on the wiki was registered before the user who commented the code was registered. $1 is the username.",
 	"scratchlogin-success": "Message for successful login. $1 is the logged in username.",
 	"scratchlogin-code-reset": "Message for successful reset of verification code. $1 is the special page to return to.",
 	"scratchlogin-userlogin-link": "Link added to [[Special:UserLogin]] linking to [[Special:ScratchLogin]].",
