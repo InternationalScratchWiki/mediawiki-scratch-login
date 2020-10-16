@@ -11,6 +11,7 @@
 	"scratchlogin-instructions": "'''Not: Scratch hesabıyla giriş yapmak için bu vikide halihazırda bir hesabınız olmalıdır!'''<br/>Lütfen aşağıdaki doğrulama kodunu $1kullanıcı doğrulama projesine$2 yorum olarak gönderin:<br/>'''$3'''<br/><small>(Eğer gerekliyse, [[Special:ScratchLogin/reset|doğrulama kodunuzu sıfırlayabilirsiniz]].)</small>",
 	"scratchlogin-uncommented": "Kodu projeye yolladığınız gözükmüyor.",
 	"scratchlogin-unregistered": "Kullanıcı '''$1''' bu vikide kaydolmamış.",
+	"scratchlogin-account-age-error": "'''$1''' adlı kullanıcı Scrach hesabı oluşturulduktan önce kaydolmuş. Eylem güvenlik nedenlerinden dolayı engellendi.",
 	"scratchlogin-success": "Başarılı! Ziyaret ettiğiniz bir sonraki sayfada '''$1''' olarak giriş yapacaksınız.",
 	"scratchlogin-code-reset": "Doğrulama kodunuz sıfırlandı.<br/>[[$1]]'e geri dönün.",
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Scratch ile giriş yap]]</p>",
