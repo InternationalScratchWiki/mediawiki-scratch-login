@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"smrman"
+		]
+	},
+	"scratchlogin": "Se connecter avec Scratch",
+	"scratchlogin-desc": "Permet de se connecter avec et de réinitialiser le mot-de-passe d'un compte Scratch.",
+	"scratchlogin-project-id": "10135908",
+	"scratchlogin-project-author": "ModShare",
+	"scratchlogin-instructions": "'''Note : Vous avez déjà un compte sur ce wiki avec lequel vous vous connectez avec Scratch !'''<br/>Veuillez poster un commentaire avec le code de vérification suivant sur le $1projet de vérification d'utilisateur$2: <br/>'''$3'''<br/><small>(Si besoin, vous pouvez [[Special:ScratchLogin/reset|réinitialiser votre code de vérification]].)</small>",
+	"scratchlogin-uncommented": "On dirait que vous n'avez pas commenté sur le projet de vérification.",
+	"scratchlogin-unregistered": "L'utilisateur '''$1''' n'est pas enregistré sur ce wiki.",
+	"scratchlogin-account-age-error": "L'utilisateur '''$1''' s'est inscrit avant que le compte Scratch ait été créé. Cette action a été empêchée pour des raisons de sécurité.",
+	"scratchlogin-success": "Félicitations ! Vous serez connecté en tant que '''$1''' sur la prochaine page que vous visterez.",
+	"scratchlogin-code-reset": "Votre code de vérification a été réinitialisé.<br/>Retourner à [[$1]].",
+	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Se connecter avec Scratch]]</p>",
+	"scratchpasswordreset": "Réinitialiser votre mot de passe avec Scratch",
+	"scratchpasswordreset-instructions": "Commentez le code de vérification suivant sur le $1projet de vérification d'utilisateur$2 pour afficher un mot-de-passe temporaire pour se connecter avec : <br/>'''$3'''<br/> <small>(Si nécessaire, vous pouvez [[Special:ScratchPasswordReset/reset|réinitialiser votre code de validation]].)",
+	"scratchpasswordreset-verify": "Vérifier",
+	"scratchpasswordreset-success": "Votre mot-de-passe temporaire est '''<code>$1</code>'''. [[Special:UserLogin/$2|Connectez-vous]] et changez le au plus vite.",
+	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Réinitialiser votre mot-de-passe avec Scratch]]"
+}
