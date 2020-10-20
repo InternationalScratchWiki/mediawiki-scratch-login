@@ -51,9 +51,22 @@ function topVerifCommenter($req_comment) {
 }
 
 function getScratchUserRegisteredAt($username) {
-	$info = json_decode(file_get_contents(sprintf(
+	$apiText = file_get_contents(sprintf(
 		USER_API_LINK, $username
-	)), true);
+	));
+	
+	//fail loudly if the API call fails
+	if (!isset($http_response_header)) {
+		throw new Exception('API call failed');
+	}
+	
+	//this shouldn't happen, but since this is a security-sensitive component we need to be ultra-defensive
+	if (!strstr($http_response_header[0], '200 OK')) {
+		throw new Exception('User does not exist');
+	}
+	
+	$info = json_decode($apiText, true);
+	
 	$registeredAt = $info['history']['joined'];
 	return new ConvertibleTimestamp($registeredAt);
 }
@@ -149,20 +162,28 @@ class ScratchSpecialPage extends SpecialPage {
 			return null;
 		}
 		
-		$wikiUserTimestamp = new ConvertibleTimestamp($user->getRegistration());
-		$scratchUserTimestamp = getScratchUserRegisteredAt($username);
-		$diff = $scratchUserTimestamp->diff($wikiUserTimestamp);
-		if ($diff->invert) {
-			// Scratch user registered after wiki user.
-			// To prevent disaster, make it error.
-			$this->showError(
-				wfMessage('scratchlogin-account-age-error', $username)
-				->inContentLanguage()->parse(),
-				$out, $request
-			);
+		try {
+			$wikiUserTimestamp = new ConvertibleTimestamp($user->getRegistration());
+			$scratchUserTimestamp = getScratchUserRegisteredAt($username);
+			$diff = $scratchUserTimestamp->diff($wikiUserTimestamp);
+			if ($diff->invert) {
+				// Scratch user registered after wiki user.
+				// To prevent disaster, make it error.
+				$this->showError(
+					wfMessage('scratchlogin-account-age-error', $username)
+					->inContentLanguage()->parse(),
+					$out, $request
+				);
+				return null;
+			}
+		} catch (Exception $e) {
+			//in the event of any failure, do NOT allow the login attempt to continue
+			
+			$this->showError(wfMessage('scratchlogin-api-failure')->inContentLanguage()->parse(), $out, $request);
+			
 			return null;
 		}
-
+		
 		// clear the verification code in the session so that they have to
 		// use a different code to login as a different user
 		$request->getSession()->clear('vercode');
