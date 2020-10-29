@@ -78,6 +78,7 @@ class ScratchSpecialPage extends SpecialPage {
 		$out = $this->getOutput();
 		$out->disallowUserJs();
 		$this->setHeaders();
+		$this->checkReadOnly();
 
 		if ($par == 'reset') {
 			$this->resetCode( $out, $request );
