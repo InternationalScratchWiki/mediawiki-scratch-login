@@ -10,6 +10,7 @@
 	"scratchlogin-project-id": "10135908",
 	"scratchlogin-project-author": "ModShare",
 	"scratchlogin-instructions": "'''Note: You must already have an account on this wiki to log in with Scratch!'''<br/>Please comment the following verification code on the $1user verification project$2:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchLogin/reset|reset your verification code]].)</small>",
+	"scratchlogin-cloud-instructions": "'''Note: You must already have an account on this wiki to log in with Scratch!'''<br/>Please open the $1user verification project$2, click the Green Flag and paste the following verification code on the question prompt:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchLogin/reset|reset your verification code]].)</small>",
 	"scratchlogin-uncommented": "You do not appear to have commented the code on the project.",
 	"scratchlogin-unregistered": "The user '''$1''' is not registered on this wiki.",
 	"scratchlogin-account-age-error": "The user '''$1''' was registered before the Scratch account is created. The action was prevented for security reasons.",
@@ -19,7 +20,11 @@
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Log in with Scratch]]</p>",
 	"scratchpasswordreset": "Reset password with Scratch",
 	"scratchpasswordreset-instructions": "Comment the following verification code on the $1user verification project$2 to be displayed a temporary password to log in with:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchPasswordReset/reset|reset your verification code]].)</small>",
+	"scratchpasswordreset-cloud-instructions": "Open the $1user verification project$2, click the Green Flag, and paste the following verification code on the question prompt to be displayed a temporary password to log in with:<br/>'''$3'''<br/><small>(If necessary, you can [[Special:ScratchPasswordReset/reset|reset your verification code]].)</small>",
 	"scratchpasswordreset-verify": "Verify",
 	"scratchpasswordreset-success": "Your temporary password is '''<code>$1</code>'''. Please [[Special:UserLogin/$2|log in]] and change it as soon as possible.",
-	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Reset your password with Scratch]]"
+	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Reset your password with Scratch]]",
+    "scratchlogin-cloud-project-id": "548006054",
+    "scratchlogin-cloud-var-name": "verificationcode",
+    "scratchlogin-cloud-not-found": "You do not appear to have pasted the code on the project."
 }

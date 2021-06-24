@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/ScratchLogin.common.php';
 
 class SpecialScratchLogin extends ScratchSpecialPage {
@@ -13,7 +12,7 @@ class SpecialScratchLogin extends ScratchSpecialPage {
 
 	function showForm($out, $request) {
 		// show the verification form with login instructions and "Log in" button
-		$this->verifForm($out, $request, 'scratchlogin-instructions', 'login');
+		$this->verifForm($out, $request, 'login', 'login');
 	}
 
 	// handle someone hitting the login button

@@ -1,72 +1,37 @@
 <?php
-
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
-define('SCRATCH_COMMENT_API_URL', 'https://api.scratch.mit.edu/users/%s/projects/%s/comments?offset=0&limit=20');
-define('PROJECT_LINK', 'https://scratch.mit.edu/projects/%s/');
 define('USER_API_LINK', 'https://api.scratch.mit.edu/users/%s/');
 
-function randomVerificationCode() {
-	// translate 0->A, 1->B, etc to bypass Scratch phone number censor
-	return strtr(hash('sha256', random_bytes(16)), '0123456789', 'ABCDEFGHIJ');
-}
-
-function generateNewCodeForSession(&$session) {
-	$session->persist();
-	$session->set('vercode', randomVerificationCode());
-	$session->save();
-}
-
-function sessionVerificationCode(&$session) {
-	if (!$session->exists('vercode')) {
-		generateNewCodeForSession($session);
-	}
-	return $session->get('vercode');
-}
-
-function commentsForProject($author, $project_id) {
-	return json_decode(file_get_contents(sprintf(
-		SCRATCH_COMMENT_API_URL, $author, $project_id
-	)), true);
-}
-
-function verifComments() {
-	return commentsForProject(
-		wfMessage('scratchlogin-project-author')->text(),
-		wfMessage('scratchlogin-project-id')->text()
-	);
-}
-
-function topVerifCommenter($req_comment) {
-	$comments = verifComments();
-
-	$matching_comments = array_filter($comments, function(&$comment) use($req_comment) {
-		if (preg_match('/^_+|_+$|__+/', $comment['author']['username'])) return false;
-		return stristr($comment['content'], $req_comment);
-	});
-	if (empty($matching_comments)) {
-		return null;
-	}
-	return array_values($matching_comments)[0]['author']['username'];
+function getAuthenticator() {
+    global $wgScratchLoginAuthenticator;
+    switch ($wgScratchLoginAuthenticator) {
+        case 'cloud': {
+            return ScratchLogin\Authenticator\CloudVariableAuthenticator::class;
+        }
+        default: {
+            return ScratchLogin\Authenticator\ProjectCommentAuthenticator::class;
+        }
+    }
 }
 
 function getScratchUserRegisteredAt($username) {
 	$apiText = file_get_contents(sprintf(
 		USER_API_LINK, $username
 	));
-	
+
 	//fail loudly if the API call fails
 	if (!isset($http_response_header)) {
 		throw new Exception('API call failed');
 	}
-	
+
 	//this shouldn't happen, but since this is a security-sensitive component we need to be ultra-defensive
 	if (!strstr($http_response_header[0], '200 OK')) {
 		throw new Exception('User does not exist');
 	}
-	
+
 	$info = json_decode($apiText, true);
-	
+
 	$registeredAt = $info['history']['joined'];
 	return new ConvertibleTimestamp($registeredAt);
 }
@@ -98,26 +63,21 @@ class ScratchSpecialPage extends SpecialPage {
 	// $instructions: message key giving instructions for this page
 	// $action: message key for button value
 	function verifForm($out, $request, $instructions, $action) {
+        $authenticator = getAuthenticator();
+
 		// this all takes place in a form
 		$out->addHTML(Html::openElement(
 				'form',
 				[ 'method' => 'POST' ]
 		));
 
-		// create a link to the user verification project
-		$link = Html::openElement('a', [
-			'href' => sprintf(PROJECT_LINK, wfMessage('scratchlogin-project-id')->text()),
-			'target' => '_blank'
-		]);
-
 		$session = $request->getSession();
 
-		// show the instructions to comment the verification code
-		// on the project (using the link we generated above)
-		$out->addHTML(wfMessage($instructions)->rawParams(
-			$link, Html::closeElement( 'a' ),
-			sessionVerificationCode($session)
-		)->inContentLanguage()->parseAsBlock());
+		$out->addHTML($authenticator::getInstructions(
+            $instructions,
+            $session,
+            $this
+        )->inContentLanguage()->parseAsBlock());
 
 		// show the submit button
 		$out->addHTML(Html::rawElement(
@@ -135,13 +95,12 @@ class ScratchSpecialPage extends SpecialPage {
 
 	function verifSucceeded($out, $request) {
 		$session = $request->getSession();
-		// see the first person to comment the verification code
-		$username = topVerifCommenter(sessionVerificationCode($session));
+        $authenticator = getAuthenticator();
+		$username = $authenticator::getAssociatedUsername($session, $this);
 
-		// if nobody commented the verification code, show an error
 		if ($username == null) {
 			$this->showError(
-				wfMessage('scratchlogin-uncommented')
+				$authenticator::getMissingMsg($this)
 				->inContentLanguage()->plain(),
 				$out, $request
 			);
@@ -162,7 +121,7 @@ class ScratchSpecialPage extends SpecialPage {
 			);
 			return null;
 		}
-		
+
 		try {
 			$wikiUserTimestamp = new ConvertibleTimestamp($user->getRegistration());
 			$scratchUserTimestamp = getScratchUserRegisteredAt($username);
@@ -179,22 +138,23 @@ class ScratchSpecialPage extends SpecialPage {
 			}
 		} catch (Exception $e) {
 			//in the event of any failure, do NOT allow the login attempt to continue
-			
+
 			$this->showError(wfMessage('scratchlogin-api-failure')->inContentLanguage()->parse(), $out, $request);
-			
+
 			return null;
 		}
-		
+
 		// clear the verification code in the session so that they have to
 		// use a different code to login as a different user
-		$request->getSession()->clear('vercode');
+		$authenticator::clearAuthCode($session);
 		return $user;
 	}
 
 	// reset the code associated with the current user's session
 	function doCodeReset($out, $request, $returnto) {
 		$session = $request->getSession();
-		generateNewCodeForSession($session);
+		$authenticator = getAuthenticator();
+        $authenticator::clearAuthCode($session);
 		$out->addWikiMsg('scratchlogin-code-reset', $returnto);
 	}
 }

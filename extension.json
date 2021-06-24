@@ -15,11 +15,20 @@
 		"SpecialScratchPasswordReset": "SpecialScratchPasswordReset.php",
 		"ScratchLoginHooks": "ScratchLogin.hooks.php"
 	},
+    "AutoloadNamespaces": {
+        "ScratchLogin\\Authenticator\\": "./authenticator/"
+    },
 	"SpecialPages": {
 		"ScratchLogin": "SpecialScratchLogin",
 		"ScratchPasswordReset": "SpecialScratchPasswordReset"
 	},
 	"Hooks": {
 		"BeforePageDisplay": "ScratchLoginHooks::insertScratchLoginLink"
-	}
+	},
+    "config": {
+        "ScratchLoginAuthenticator": {
+            "value": "project"
+        }
+    },
+    "manifest_version": 2
 }
