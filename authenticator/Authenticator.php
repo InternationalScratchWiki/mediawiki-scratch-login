@@ -60,6 +60,7 @@ abstract class Authenticator {
 			curl_close($ch);
 			throw new Exception("Authenticator::get failed while querying $url: status code $statusCode");
 		}
+		curl_close($ch);
 		return $result;
 	}
 
