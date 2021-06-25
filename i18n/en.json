@@ -24,7 +24,7 @@
 	"scratchpasswordreset-verify": "Verify",
 	"scratchpasswordreset-success": "Your temporary password is '''<code>$1</code>'''. Please [[Special:UserLogin/$2|log in]] and change it as soon as possible.",
 	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Reset your password with Scratch]]",
-    "scratchlogin-cloud-project-id": "548006054",
-    "scratchlogin-cloud-var-name": "verificationcode",
-    "scratchlogin-cloud-not-found": "You do not appear to have pasted the code on the project."
+	"scratchlogin-cloud-project-id": "548006054",
+	"scratchlogin-cloud-var-name": "verificationcode",
+	"scratchlogin-cloud-not-found": "You do not appear to have pasted the code on the project."
 }

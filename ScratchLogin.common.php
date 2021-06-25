@@ -4,15 +4,15 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 define('USER_API_LINK', 'https://api.scratch.mit.edu/users/%s/');
 
 function getAuthenticator() {
-    global $wgScratchLoginAuthenticator;
-    switch ($wgScratchLoginAuthenticator) {
-        case 'cloud': {
-            return ScratchLogin\Authenticator\CloudVariableAuthenticator::class;
-        }
-        default: {
-            return ScratchLogin\Authenticator\ProjectCommentAuthenticator::class;
-        }
-    }
+	global $wgScratchLoginAuthenticator;
+	switch ($wgScratchLoginAuthenticator) {
+		case 'cloud': {
+			return ScratchLogin\Authenticator\CloudVariableAuthenticator::class;
+		}
+		default: {
+			return ScratchLogin\Authenticator\ProjectCommentAuthenticator::class;
+		}
+	}
 }
 
 function getScratchUserRegisteredAt($username) {
@@ -63,7 +63,7 @@ class ScratchSpecialPage extends SpecialPage {
 	// $instructions: message key giving instructions for this page
 	// $action: message key for button value
 	function verifForm($out, $request, $instructions, $action) {
-        $authenticator = getAuthenticator();
+		$authenticator = getAuthenticator();
 
 		// this all takes place in a form
 		$out->addHTML(Html::openElement(
@@ -74,10 +74,10 @@ class ScratchSpecialPage extends SpecialPage {
 		$session = $request->getSession();
 
 		$out->addHTML($authenticator::getInstructions(
-            $instructions,
-            $session,
-            $this
-        )->inContentLanguage()->parseAsBlock());
+			$instructions,
+			$session,
+			$this
+		)->inContentLanguage()->parseAsBlock());
 
 		// show the submit button
 		$out->addHTML(Html::rawElement(
@@ -95,7 +95,7 @@ class ScratchSpecialPage extends SpecialPage {
 
 	function verifSucceeded($out, $request) {
 		$session = $request->getSession();
-        $authenticator = getAuthenticator();
+		$authenticator = getAuthenticator();
 		$username = $authenticator::getAssociatedUsername($session, $this);
 
 		if ($username == null) {
@@ -154,7 +154,7 @@ class ScratchSpecialPage extends SpecialPage {
 	function doCodeReset($out, $request, $returnto) {
 		$session = $request->getSession();
 		$authenticator = getAuthenticator();
-        $authenticator::clearAuthCode($session);
+		$authenticator::clearAuthCode($session);
 		$out->addWikiMsg('scratchlogin-code-reset', $returnto);
 	}
 }

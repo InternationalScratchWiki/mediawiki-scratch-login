@@ -25,7 +25,7 @@
 	"scratchpasswordreset-verify": "Text of \"Verify\" button used instead of \"Log in\".",
 	"scratchpasswordreset-success": "Message for successful password reset. $1 is the temporary password and $2 is the username of the user whose password was reset, used to link to UserLogin with that username.",
 	"scratchpasswordreset-passwordreset-link": "Link added to [[Special:PasswordReset]] linking to [[Special:ScratchPasswordReset]].",
-    "scratchlogin-cloud-project-id": "ID of the verification project for cloud variable-based verification",
-    "scratchlogin-cloud-var-name": "Name of the cloud variable used for verification, excluding the cloud letter prefix",
-    "scratchlogin-cloud-not-found": "Error message when the code is not pasted on the project."
+	"scratchlogin-cloud-project-id": "ID of the verification project for cloud variable-based verification",
+	"scratchlogin-cloud-var-name": "Name of the cloud variable used for verification, excluding the cloud letter prefix",
+	"scratchlogin-cloud-not-found": "Error message when the code is not pasted on the project."
 }
