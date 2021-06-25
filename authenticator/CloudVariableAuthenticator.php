@@ -14,9 +14,11 @@ class CloudVariableAuthenticator extends Authenticator {
 	private const PROJECT_LINK = 'https://scratch.mit.edu/projects/%s/';
 
 	protected static function generateRandomAuthCode(): string {
-		$a = random_int(1e18, PHP_INT_MAX);
-		$b = random_int(1e18, PHP_INT_MAX);
-		return "$a$b";
+		$code = (string)random_int(1, 9);
+		for ($x = 35; $x--;) {
+			$code .= random_int(0, 9);
+		}
+		return $code;
 	}
 
 	public static function getId(): string {
