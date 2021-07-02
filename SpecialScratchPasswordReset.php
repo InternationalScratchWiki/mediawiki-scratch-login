@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/ScratchLogin.common.php';
 
 use MediaWiki\Auth\TemporaryPasswordAuthenticationRequest;
@@ -18,7 +17,7 @@ class SpecialScratchPasswordReset extends ScratchSpecialPage {
 		// show the verification form with pwreset instructions and "Verify" button
 		$this->verifForm(
 			$out, $request,
-			'scratchpasswordreset-instructions',
+			'passwordreset',
 			'scratchpasswordreset-verify'
 		);
 	}
