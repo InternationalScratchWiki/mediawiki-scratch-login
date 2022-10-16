@@ -3,10 +3,11 @@ require_once __DIR__ . '/ScratchLogin.common.php';
 
 use MediaWiki\Auth\TemporaryPasswordAuthenticationRequest;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\User\UserFactory;
 
 class SpecialScratchPasswordReset extends ScratchSpecialPage {
-	function __construct() {
-		parent::__construct('ScratchPasswordReset');
+	function __construct(UserFactory $userFactory) {
+		parent::__construct('ScratchPasswordReset', $userFactory);
 	}
 
 	function getGroupName() {

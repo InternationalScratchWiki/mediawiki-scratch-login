@@ -1,9 +1,11 @@
 <?php
 require_once __DIR__ . '/ScratchLogin.common.php';
 
+use MediaWiki\User\UserFactory;
+
 class SpecialScratchLogin extends ScratchSpecialPage {
-	function __construct() {
-		parent::__construct('ScratchLogin');
+	function __construct(UserFactory $userFactory) {
+		parent::__construct('ScratchLogin', $userFactory);
 	}
 
 	function getGroupName() {

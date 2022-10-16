@@ -23,8 +23,18 @@
 		"ScratchLogin\\Authenticator\\": "./authenticator/"
 	},
 	"SpecialPages": {
-		"ScratchLogin": "SpecialScratchLogin",
-		"ScratchPasswordReset": "SpecialScratchPasswordReset"
+		"ScratchLogin": {
+			"class": "SpecialScratchLogin",
+			"services": [
+				"UserFactory"
+			]
+		},
+		"ScratchPasswordReset": {
+			"class": "SpecialScratchPasswordReset",
+			"services": [
+				"UserFactory"
+			]
+		}
 	},
 	"Hooks": {
 		"BeforePageDisplay": "main"
