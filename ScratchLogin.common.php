@@ -101,7 +101,7 @@ class ScratchSpecialPage extends SpecialPage {
 		if ($username == null) {
 			$this->showError(
 				$authenticator::getMissingMsg($this)
-				->inContentLanguage()->plain(),
+				->inContentLanguage()->parse(),
 				$out, $request
 			);
 			return null;
