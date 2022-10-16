@@ -22,7 +22,7 @@ class SpecialScratchLogin extends ScratchSpecialPage {
 		// this handles all of the error message showing
 		// and returns null if failed
 		$user = $this->verifSucceeded($out, $request);
-		if ($user == null) return;
+		if ($user === null) return;
 		// now that we have passed all the other hurdles, log in the user
 		// set the logged in user to the user found by that name
 		$request->getSession()->setUser($user);

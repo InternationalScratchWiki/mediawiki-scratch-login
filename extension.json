@@ -32,7 +32,8 @@
 		"ScratchPasswordReset": {
 			"class": "SpecialScratchPasswordReset",
 			"services": [
-				"UserFactory"
+				"UserFactory",
+				"AuthManager"
 			]
 		}
 	},
