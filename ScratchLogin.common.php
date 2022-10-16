@@ -155,7 +155,7 @@ class ScratchSpecialPage extends SpecialPage {
 			//in the event of any failure, do NOT allow the login attempt to continue
 
 			$this->showError(wfMessage('scratchlogin-api-failure')->inContentLanguage()->parse(), $out, $request);
-			$logger->error('Error while checking registration time: {exc}', ['exc' => $e]);
+			$logger->error('Error while checking registration time: {exception}', ['exception' => $e]);
 
 			return null;
 		}

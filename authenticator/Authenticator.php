@@ -56,7 +56,7 @@ abstract class Authenticator {
 			throw new Exception($err);
 		}
 		$statusCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-		if ($statusCode != 200) {
+		if ($statusCode !== 200) {
 			curl_close($ch);
 			throw new Exception("Authenticator::get failed while querying $url: status code $statusCode");
 		}
