@@ -1,14 +1,18 @@
 {
 	"name": "Scratch Login",
-	"author": ["Jacob G. (jvvg)", "Kenny2scratch"],
+	"author": [
+		"Jacob G. (jvvg)",
+		"Kenny2scratch"
+	],
 	"url": "https://github.com/jacob-g/mediawiki-scratch-login",
 	"descriptionmsg": "scratchlogin-desc",
 	"version": "1.1",
 	"license-name": "GPL-2.0-or-later",
 	"type": "specialpage",
-	"manifest_version": 1,
 	"MessagesDirs": {
-		"ScratchLogin": ["i18n"]
+		"ScratchLogin": [
+			"i18n"
+		]
 	},
 	"AutoloadClasses": {
 		"SpecialScratchLogin": "SpecialScratchLogin.php",
@@ -23,12 +27,22 @@
 		"ScratchPasswordReset": "SpecialScratchPasswordReset"
 	},
 	"Hooks": {
-		"BeforePageDisplay": "ScratchLoginHooks::insertScratchLoginLink"
+		"BeforePageDisplay": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "ScratchLoginHooks"
+		}
 	},
 	"config": {
 		"ScratchLoginAuthenticator": {
-			"value": "project"
+			"value": {
+				"value": "project"
+			}
 		}
 	},
-	"manifest_version": 2
+	"manifest_version": 2,
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	}
 }
