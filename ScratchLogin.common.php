@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\User\UserFactory;
+use MediaWiki\Logger\LoggerFactory;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 define('USER_API_LINK', 'https://api.scratch.mit.edu/users/%s/');
@@ -7,17 +10,18 @@ function getAuthenticator() {
 	global $wgScratchLoginAuthenticator;
 	switch ($wgScratchLoginAuthenticator) {
 		case 'cloud': {
-			return ScratchLogin\Authenticator\CloudVariableAuthenticator::class;
-		}
+				return ScratchLogin\Authenticator\CloudVariableAuthenticator::class;
+			}
 		default: {
-			return ScratchLogin\Authenticator\ProjectCommentAuthenticator::class;
-		}
+				return ScratchLogin\Authenticator\ProjectCommentAuthenticator::class;
+			}
 	}
 }
 
 function getScratchUserRegisteredAt($username) {
 	$apiText = file_get_contents(sprintf(
-		USER_API_LINK, $username
+		USER_API_LINK,
+		$username
 	));
 
 	//fail loudly if the API call fails
@@ -37,6 +41,13 @@ function getScratchUserRegisteredAt($username) {
 }
 
 class ScratchSpecialPage extends SpecialPage {
+	private UserFactory $userFactory;
+
+	function __construct(string $title, UserFactory $userFactory) {
+		parent::__construct($title);
+		$this->userFactory = $userFactory;
+	}
+
 
 	function execute($par) {
 		$request = $this->getRequest();
@@ -45,18 +56,18 @@ class ScratchSpecialPage extends SpecialPage {
 		$this->setHeaders();
 		$this->checkReadOnly();
 
-		if ($par == 'reset') {
-			$this->resetCode( $out, $request );
+		if ($par === 'reset') {
+			$this->resetCode($out, $request);
 		} else if ($request->wasPosted()) {
-			$this->onPost( $out, $request );
+			$this->onPost($out, $request);
 		} else {
-			$this->showForm( $out, $request );
+			$this->showForm($out, $request);
 		}
 	}
 
 	// show an error followed by the login form again
 	function showError($error, $out, $request) {
-		$out->addHTML(Html::rawElement('p', [ 'class' => 'error' ], $error));
+		$out->addHTML(Html::rawElement('p', ['class' => 'error'], $error));
 		$this->showForm($out, $request);
 	}
 
@@ -67,8 +78,8 @@ class ScratchSpecialPage extends SpecialPage {
 
 		// this all takes place in a form
 		$out->addHTML(Html::openElement(
-				'form',
-				[ 'method' => 'POST' ]
+			'form',
+			['method' => 'POST']
 		));
 
 		$session = $request->getSession();
@@ -80,7 +91,7 @@ class ScratchSpecialPage extends SpecialPage {
 		)->inContentLanguage()->parseAsBlock());
 
 		// show the submit button
-		$out->addHTML(Html::rawElement(
+		$out->addHTML(Html::element(
 			'input',
 			[
 				'type' => 'submit',
@@ -90,34 +101,37 @@ class ScratchSpecialPage extends SpecialPage {
 		));
 
 		//close the form
-		$out->addHTML(Html::closeElement( 'form' ));
+		$out->addHTML(Html::closeElement('form'));
 	}
 
 	function verifSucceeded($out, $request) {
+		$logger = LoggerFactory::getInstance('SpecialScratchLogin');
 		$session = $request->getSession();
 		$authenticator = getAuthenticator();
 		$username = $authenticator::getAssociatedUsername($session, $this);
 
-		if ($username == null) {
+		if ($username === null) {
 			$this->showError(
 				$authenticator::getMissingMsg($this)
-				->inContentLanguage()->plain(),
-				$out, $request
+					->inContentLanguage()->parse(),
+				$out,
+				$request
 			);
 			return null;
 		}
 
 		// now attempt to retrieve the MediaWiki user
 		// associated with whoever commented the verification code
-		$user = User::newFromName($username);
+		$user = $this->userFactory->newFromName($username);
 
 		// ...if that user does not exist, then show an error
 		// that this account does not exist on the wiki
-		if ($user->getId() == 0) {
+		if (!$user->isRegistered()) {
 			$this->showError(
 				wfMessage('scratchlogin-unregistered', $username)
-				->inContentLanguage()->parse(),
-				$out, $request
+					->inContentLanguage()->parse(),
+				$out,
+				$request
 			);
 			return null;
 		}
@@ -131,8 +145,9 @@ class ScratchSpecialPage extends SpecialPage {
 				// To prevent disaster, make it error.
 				$this->showError(
 					wfMessage('scratchlogin-account-age-error', $username)
-					->inContentLanguage()->parse(),
-					$out, $request
+						->inContentLanguage()->parse(),
+					$out,
+					$request
 				);
 				return null;
 			}
@@ -140,6 +155,7 @@ class ScratchSpecialPage extends SpecialPage {
 			//in the event of any failure, do NOT allow the login attempt to continue
 
 			$this->showError(wfMessage('scratchlogin-api-failure')->inContentLanguage()->parse(), $out, $request);
+			$logger->error('Error while checking registration time: {exception}', ['exception' => $e]);
 
 			return null;
 		}
