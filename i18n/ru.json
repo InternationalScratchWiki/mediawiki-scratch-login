@@ -4,8 +4,8 @@
 			"Gohoski"
 		]
 	},
-	"scratchlogin": "Войти с помощью Scratch",
-	"scratchlogin-desc": "Позволяет вход или сброс пароля с помощью Scratch аккаунта.",
+	"scratchlogin": "Вход через Scratch",
+	"scratchlogin-desc": "Позволяет вход в систему или сброс пароля с помощью Scratch аккаунта.",
 	"scratchlogin-project-id": "10135908",
 	"scratchlogin-project-author": "ModShare",
 	"scratchlogin-instructions": "'''Примечание: У Вас уже должен быть аккаунт на данной вики, чтобы войти через Scratch!'''<br/>Оставьте комментарий с этим кодом верификации на $1проекте верификации пользователя$2:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchLogin/reset|сбросить свой код верификации]].)</small>",
@@ -18,8 +18,8 @@
 	"scratchlogin-code-reset": "Ваш код верификации был сброшен.<br/>Вернуться в [[$1]].",
 	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Войти через Scratch]]</p>",
 	"scratchpasswordreset": "Сбросить пароль с помощью Scratch",
-	"scratchpasswordreset-instructions": "Оставь комментарий со следующим кодом верификации на $1проекте верификации пользователя$2, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
-	"scratchpasswordreset-cloud-instructions": "Откройте $1проект верификации пользователя$2, кликни на зелёный флаг и вставь следующий код верификации в текстовом поле для вопроса, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
+	"scratchpasswordreset-instructions": "Оставьте комментарий со следующим кодом верификации на $1проекте верификации пользователя$2, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
+	"scratchpasswordreset-cloud-instructions": "Откройте $1проект верификации пользователя$2, кликните на зелёный флаг и вставьте следующий код верификации в текстовом поле для вопроса, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
 	"scratchpasswordreset-verify": "Верифицироваться",
 	"scratchpasswordreset-success": "Ваш временный пароль — '''<code>$1</code>'''. Пожалуйста, [[Special:UserLogin/$2|войдите в систему]] и измените его как можно скорее.",
 	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Сбросить свой пароль через Scratch]]",
