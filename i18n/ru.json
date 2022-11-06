@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gohoski"
+		]
+	},
+	"scratchlogin": "Вход через Scratch",
+	"scratchlogin-desc": "Позволяет вход в систему или сброс пароля с помощью Scratch аккаунта.",
+	"scratchlogin-project-id": "10135908",
+	"scratchlogin-project-author": "ModShare",
+	"scratchlogin-instructions": "'''Примечание: У Вас уже должен быть аккаунт на данной вики, чтобы войти через Scratch!'''<br/>Оставьте комментарий с этим кодом верификации на $1проекте верификации пользователя$2:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchLogin/reset|сбросить свой код верификации]].)</small>",
+	"scratchlogin-cloud-instructions": "'''Примечание: У Вас уже должен быть аккаунт на данной вики, чтобы войти через Scratch!'''<br/>Откройте $1проект верификации пользователя$2, нажмите на зелёный флаг и вставьте следующий код верификации в текстовом поле для вопроса:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchLogin/reset|сбросить свой код верификации]].)</small>",
+	"scratchlogin-uncommented": "Вы, видимо, не оставили комментарий с кодом на проекте.",
+	"scratchlogin-unregistered": "Пользователь '''$1''' не зарегестрирован на данной вики.",
+	"scratchlogin-account-age-error": "Пользователь '''$1''' был зарегестрирован до создания аккаунта на Scratch. Действие было предотвращено в целях безопасности.",
+	"scratchlogin-api-failure": "Была ошибка во время связи с API у Scratch. Пожалуйста, повторите попытку позже.",
+	"scratchlogin-success": "Успех! Вы войдёте в систему как '''$1''' на следующей странице, которую Вы посетите.",
+	"scratchlogin-code-reset": "Ваш код верификации был сброшен.<br/>Вернуться в [[$1]].",
+	"scratchlogin-userlogin-link": "<p class=\"mw-ui-vform\" style=\"text-align: center;\">[[Special:ScratchLogin|Войти через Scratch]]</p>",
+	"scratchpasswordreset": "Сбросить пароль с помощью Scratch",
+	"scratchpasswordreset-instructions": "Оставьте комментарий со следующим кодом верификации на $1проекте верификации пользователя$2, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
+	"scratchpasswordreset-cloud-instructions": "Откройте $1проект верификации пользователя$2, кликните на зелёный флаг и вставьте следующий код верификации в текстовом поле для вопроса, чтобы получить временный пароль для входа:<br/>'''$3'''<br/><small>(Если надо, то Вы можете [[Special:ScratchPasswordReset/reset|сбросить свой код верификации]].)</small>",
+	"scratchpasswordreset-verify": "Верифицироваться",
+	"scratchpasswordreset-success": "Ваш временный пароль — '''<code>$1</code>'''. Пожалуйста, [[Special:UserLogin/$2|войдите в систему]] и измените его как можно скорее.",
+	"scratchpasswordreset-passwordreset-link": "[[Special:ScratchPasswordReset|Сбросить свой пароль через Scratch]]",
+	"scratchlogin-cloud-project-id": "548006054",
+	"scratchlogin-cloud-var-name": "verificationcode",
+	"scratchlogin-cloud-not-found": "Вы, видимо, не оставили комментарий с кодом на проекте."
+}
